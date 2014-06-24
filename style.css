@@ -1,0 +1,656 @@
+/*--------------------------------------------------
+Uken Assignment Game - Match Link
+Author: Muhan Guclu
+Author URL: http://magicmuhan.com
+Date: June 2014
+--------------------------------------------------*/
+
+/*--------------------------------------------------
+GENERAL
+--------------------------------------------------*/
+
+body {
+	font-family: 'Lato', sans-serif;
+	background: #f4f5f4;
+}
+
+p.largetext {
+	line-height: 180%;
+	font-size: 20px;
+	margin-bottom: 0px;
+}
+
+.main {
+	margin-top: 5%;
+	padding: 0px 0px;
+	background: #f4f5f4;
+	border-radius: 15px;
+}
+
+.content {
+	text-align: center;
+	padding-right: 0px;
+}
+
+p.left {
+	text-align: left;
+}
+
+.game-container {
+	text-align: center;
+	border-left: 1px solid #f4f5f4;
+	padding: 15px 15px;
+	background: #4a514a;
+	height: 800px;
+	overflow: hidden;
+}
+
+/* Slide styles in .alert class */
+
+.alert {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #c73124;
+	color: #f4f5f4;
+	right: -100%;
+	top: 0px;
+	transition: right 0.6s ease-in-out;
+	-moz-transition: right 0.6s ease-in-out;
+	-webkit-transition: right 0.6s ease-in-out;
+	z-index: 20;
+}
+
+.level-alert {
+	background: #2e322e;
+}
+
+.win-alert {
+	background: #0F9D58;
+}
+
+.warp {
+	background: #2e322e;
+}
+
+.warp p {
+	text-align: center;
+	margin: 0px 0px;	
+}
+.warp.alert p:first-of-type {
+	margin-top: 75px;
+}
+
+.warp p.warpzone {
+	left: 51%;
+	bottom: 50px;
+}
+
+.loss-alert {
+	z-index: 35;
+}
+
+/*--------------------------------------------------
+TEXT CONTENT
+--------------------------------------------------*/
+
+p.listhead {
+	text-align: left;
+	font-family: 'Droid Sans', sans-serif;
+	font-weight: 700;
+	line-height: 150%;
+}
+
+ul {
+	padding-left: 55px;
+	text-align: left;
+	background: #dfe2df;
+	margin: 0px 0px;
+}
+
+li {
+	font-size: 16px;
+	line-height: 200%;
+}
+
+li strong {
+	margin-right: 10px;
+}
+
+ul:last-of-type {
+	padding-bottom: 25px;
+}
+
+ul.rules li {
+	font-size: 18px;
+}
+
+span.extendedli {
+	display: block;
+	margin-left: 102px;
+}
+
+h1.content-head {
+	background: #4a514a;
+	color: #f4f5f4;
+	margin: 0px;
+	padding: 35px 0px;
+	letter-spacing: 2px;
+	font-size: 48px;
+	font-weight: 300;
+	cursor: pointer;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-transition: all  0.2s linear;
+}
+
+h1.content-head:hover {
+	background: #2e322e;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-transition: all  0.2s linear;
+}
+
+.content p {
+	background: #dfe2df;
+	padding: 10px 35px;
+}
+
+p.time {
+	float: right;
+}
+
+h2 {
+	letter-spacing: 3px;
+	font-family: 'Lato', sans-serif;
+	font-size: 38px;
+	color: #f4f5f4;
+}
+
+.score {
+	visibility: hidden;
+}
+
+.score p {
+	font-family: 'Droid Sans', sans-serif;
+	position: absolute;
+	bottom: 17px;
+	left: 100px;
+	color: #f4f5f4;
+	font-size: 24px;
+	text-transform: uppercase;
+}
+
+span.score-count {
+	font-weight: 700;
+}
+
+/* Primary button effect */
+
+p.gamestart {
+	font-family: 'Droid Sans', sans-serif;
+	color: #f4f5f4;
+	margin-top: 313px;
+	font-size: 32px;
+	text-transform: uppercase;
+	font-weight: 300;
+	cursor: pointer;
+	width: 150px;
+	text-align: center;
+	border: 1px solid #f4f5f4;
+	margin-left: 316px;
+	height: 150px;
+	line-height: 150px;
+	border-radius: 50%;
+	position: relative;
+	padding-left: 4px;
+	letter-spacing: 2px;
+}
+
+p.gamestart:after {
+	position: absolute;
+	background: none;
+	content: "";
+	width: 150px;
+	height: 150px;
+	left: -1px;
+	top: 0px;
+	border: 1px solid #f4f5f4;
+	border-radius: 50%;
+}
+
+p.gamestart:hover:after {
+	width: 140px;
+	height: 140px;
+	top: 4px;
+	left: 4px;
+	border-width: 4px;
+}
+
+.alert p:first-of-type {
+	margin-top: 150px;
+	font-size: 32px;
+}
+
+.alert p {
+	color: #f4f5f4;
+	font-size: 20px;
+}
+
+.alert > p:last-of-type {
+	font-family: 'Droid Sans', sans-serif;
+	margin-top: 100px;
+	position: relative;
+	cursor: pointer;
+	margin-left: 310px;
+	font-size: 24px;
+	padding-right: 4px;
+}
+
+/* Win Slider */
+
+.win-alert p {
+	line-height: 200%;
+	font-weight: 400;
+}
+
+.win-alert p.restart.gamestart {
+	padding-top: 50px;
+	padding-right: 3px;
+	font-family: "Droid Sans", sans-serif;
+}
+
+/* Level Slider */
+
+.level-alert.alert > p {
+	font-size: 38px;
+	letter-spacing: 1px;
+}
+
+.level-alert p:last-of-type {
+	letter-spacing: 1px;
+	font-size: 20px;
+}
+
+/* Handles slide from left animation */
+.slideLeft {
+	right: 0%;
+	transition: right 0.6s ease-in-out;
+	-moz-transition: right 0.6s ease-in-out;
+	-webkit-transition: right 0.6s ease-in-out;
+}
+
+/* Warp Zone */
+
+p.warpzone {
+	color: #f4f5f4;
+	font-weight: 300;
+	font-size: 24px;
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
+	margin-left: -114px;
+	line-height: 50px;
+	border: 1px solid #f4f5f4;
+	border-radius: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 12px 35px 12px;
+	cursor: pointer;
+	letter-spacing: 1px;
+}
+
+p.warpzone:after {
+	position: absolute;
+	top: 0px;
+	left: -1px;
+	width: 218px;
+	height: 76px;
+	content: "";
+	background: none;
+	border: 1px solid #f4f5f4;
+	border-radius: 20px;
+}
+
+p.warpzone:hover:after {
+	top: 4px;
+	left: 4px;
+	width: 208px;
+	height: 66px;
+	border-width: 4px;
+}
+
+/* Warp Zone - Level List */
+
+ul.level-list {
+	background: none;
+	text-align: center;
+	list-style-type: none;
+	padding: 0px 0px;
+	margin: 75px 340px;
+}
+
+ul.level-list li {
+	margin-bottom: 20px;
+	font-size: 24px;
+	font-weight: 400;
+	text-transform: uppercase;
+	position: relative;
+	cursor: pointer;
+}
+
+ul.level-list li:before,
+ul.level-list li:after {
+	position: absolute;
+	opacity: 0.0;
+	background: none;
+	height: 100%;
+}
+
+ul.level-list li:before {
+	content: "[";
+	left: 0px;
+}
+
+ul.level-list li:after {
+	content: "]";
+	right: 0px;
+}
+
+ul.level-list li:hover:before,
+ul.level-list li:hover:after {
+	opacity: 1.0;
+}
+
+ul.level-list li:hover:before {
+	left: -20px;
+}
+
+ul.level-list li:hover:after {
+	right: -15px;
+}
+
+.loss-alert.alert > p:last-of-type {
+	font-size: 20px;
+}
+/*--------------------------------------------------
+GAME LAYOUT
+--------------------------------------------------*/
+
+.gameoverlay {
+	width: 100%;
+	height: 100%;
+	background: #4a514a;
+	z-index: 10;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	text-align: center;
+}
+
+/* Remove start screen */
+.slideOut {
+	left: 100%;
+	transition: left 0.6s ease-in-out;
+	-moz-transition: left 0.6s ease-in-out;
+	-webkit-transition: left 0.6s ease-in-out;
+}
+
+.gameboard {
+	width: 600px;
+	height: 600px;
+	margin: 0px auto;
+	position: relative;
+	margin-top: 35px;
+}
+
+.addtime {
+	visibility: hidden;
+	position: absolute;
+	bottom: 25px;
+	color: #f4f5f4;
+	right: 100px;
+	font-size: 18px;
+	font-family: 'Droid Sans', sans-serif;
+	padding: 10px 15px 0px;
+	border: 1px solid #f4f5f4;
+	line-height: 100%;
+	border-radius: 4px;
+	cursor: pointer;
+	letter-spacing: 1px;
+}
+
+.notime {
+	color: #6f7b6f;
+	border-color: #6f7b6f;
+}
+
+.timebar {
+	visibility: hidden;
+	z-index: 5;
+	height: 600px;
+	width: 50px;
+	position: absolute;
+	right: 25px;
+	bottom: 89px;
+	background: #0f9d58;
+	border: 3px solid #084E2C;
+	transition: height 1s linear;
+	-moz-transition: height 1s linear;
+	-webkit-transition: height 1s linear;
+}
+
+.gcell {
+	width: 60px;
+	height: 60px;
+	background: #f4f5f4;
+	border: 1px solid #000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+}
+
+.gcell.active {
+	cursor: pointer;
+}
+
+/* Formatting */
+
+.grow1 > *{
+	top: 60px;
+}
+
+.grow2 > * {
+	top: 120px;
+}
+
+.grow3 > * {
+	top: 180px;
+}
+
+.grow4 > * {
+	top: 240px;
+}
+
+.grow5 > * {
+	top: 300px;
+}
+
+.grow6 > * {
+	top: 360px;
+}
+
+.grow7 > * {
+	top: 420px;
+}
+
+.grow8 > * {
+	top: 480px;
+}
+
+.grow9 > * {
+	top: 540px;
+}
+.gcell.gcol1 {
+	left: 60px;
+}
+
+.gcell.gcol2 {
+	left: 120px;
+}
+
+.gcell.gcol3 {
+	left: 180px;
+}
+
+.gcell.gcol4 {
+	left: 240px;
+}
+
+.gcell.gcol5 {
+	left: 300px;
+}
+
+.gcell.gcol6 {
+	left: 360px;
+}
+
+.gcell.gcol7 {
+	left: 420px;
+}
+
+.gcell.gcol8 {
+	left: 480px;
+}
+.gcell.gcol9 {
+	left: 540px;
+}
+
+.active {
+	-webkit-box-shadow: 4px 4px 8px 0px rgba(30, 30, 30, 0.5);
+	-moz-box-shadow:    4px 4px 8px 0px rgba(30, 30, 30, 0.5);
+	box-shadow:         4px 4px 8px 0px rgba(30, 30, 30, 0.5);
+	z-index: 5;
+}
+
+
+.empty {
+	background: #f4f5f4;
+	z-index: 1;
+}
+
+/*--------------------------------------------------
+GAME PIECES
+--------------------------------------------------*/
+
+.type1.active, .type7.active {
+	background: #db4437;
+}
+
+.type2.active, .type8.active {
+	background: #4285f4;
+}
+
+.type3.active, .type9.active {
+	background: #0f9d58;
+}
+
+.type4.active, .type10.active {
+	background: #f4b400;
+}
+
+.type5.active, .type11.active {
+	background: #8565c4;
+}
+
+.type6.active, .type12.active {
+	background: #F47E21;
+}
+
+/* Circle symbols */
+.type7.active:after,
+.type10.active:after,
+.type11.active:after {
+	background: #f4f5f4;
+	width: 30px;
+	height: 30px;
+	content: "";
+	color: #f4f5f4;
+}
+
+.type8.active {
+	background: #4285f4;
+}
+
+.type8.active:after,
+.type9.active:after,
+.type12.active:after {
+	background: none;
+	content: "";
+	width: 0; 
+	height: 0; 
+	border-left: 15px solid transparent; 
+	border-right: 15px solid transparent; 
+	border-top: 30px solid #f4f5f4;
+}
+
+.active:after {
+	position: absolute;
+	top: 14px;
+	left: 14px;
+	font-size: 40px;
+
+}
+
+.selected {
+	border: 1px solid #f4f5f4;
+	-ms-transform: translate(-4px, -4px); /* IE 9 */
+  -webkit-transform: translate(-4px, -4px); /* Chrome, Safari, Opera */
+  transform: translate(-4px, -4px);
+  width: 68px;
+  height: 68px;
+  z-index: 30;
+  -webkit-box-shadow: 3px 12px 12px 0px rgba(30, 30, 30, 0.5);
+	-moz-box-shadow:    3px 12px 12px 0px rgba(30, 30, 30, 0.5);
+	box-shadow:         3px 12px 12px 0px rgba(30, 30, 30, 0.5);
+}
+
+.active.selected:after {
+	left: 18px;
+	top: 18px;
+}
+
+.error {
+	background: #FF2215 !important;
+}
+
+.error:after {
+	border-style:hidden;
+	opacity: 0.0;
+}
+
+.pathflash {
+	/*
+	-webkit-box-shadow:inset 0 0 10px 5px rgba(5, 157, 88, 0.7);
+	box-shadow:inset 0 0 10px 5px rgba(5, 157, 88, 0.7);
+	*/
+	border-radius: 50%;
+	transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+}
+
+/* Add most common transition setting here to save filespace */
+.pathflash, .error:after, .error,
+.selected, .active, .active:after,
+.empty, ul.level-list li:hover:after, 
+ul.level-list li:after, ul.level-list li:after,
+p.gamestart, p.gamestart:hover, p.gamestart:after, 
+p.gamestart:hover:after, p.warpzone:after, p.warpzone:hover:after {
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-transition: all  0.2s linear;
+}

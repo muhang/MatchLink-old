@@ -63,6 +63,7 @@ p.left {
 
 .level-alert {
 	background: #2e322e;
+	right: 0px;
 }
 
 .win-alert {

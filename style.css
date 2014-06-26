@@ -63,6 +63,7 @@ p.left {
 
 .level-alert {
 	background: #2e322e;
+	right: 0px;
 }
 
 .win-alert {
@@ -265,11 +266,29 @@ p.gamestart:hover:after {
 .level-alert.alert > p {
 	font-size: 38px;
 	letter-spacing: 1px;
+	line-height: 200%;
+}
+
+.level-alert.alert > p:first-of-type {
+	border-bottom: 1px solid #f4f5f4;
+	margin-left: 150px;
+	margin-right: 150px;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+}
+
+.level-alert.alert > p.levelscore {
+	font-size: 24px;
+}
+
+.level-alert.alert > p.levelscore span {
+	font-weight: 700;
 }
 
 .level-alert p:last-of-type {
 	letter-spacing: 1px;
 	font-size: 20px;
+	line-height: 150px;
 }
 
 /* Handles slide from left animation */
